@@ -4,7 +4,9 @@
 
 <h2>Technologies: </h2>
  • Java 22
+ 
  • InteliJ IDEA
+ 
  • Api Gutendex
 
 <h4 align="center"> 
