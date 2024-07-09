@@ -10,14 +10,13 @@
 • InteliJ IDEA
 
 • PostgreSQL
-
  <h3>Functionalities: </h3>
  <p>This project has a total of 5 features, which are: </p>
-+ Search Book By Tittle;
-+ List Books Registered in the Database;
-+ List Authors Already Registed in the Database;
-+ List Living Authors in a Given Year;
-+ List Books in a Given Language.
+• Search Book By Tittle;
+• List Books Registered in the Database;
+• List Authors Already Registed in the Database;
+• List Living Authors in a Given Year;
+• List Books in a Given Language.
 	 
 <h4 align="center"> 
 	🚧 Status: Finished  🚧
