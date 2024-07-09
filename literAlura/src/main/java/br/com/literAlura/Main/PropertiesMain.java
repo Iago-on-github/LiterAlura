@@ -9,22 +9,17 @@ import br.com.literAlura.Repository.BookRepository;
 import br.com.literAlura.Service.ClientSolicitation;
 import br.com.literAlura.Service.ConvertData;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
 import java.util.Scanner;
 
-@Component
 public class PropertiesMain {
     private final Scanner scanner = new Scanner(System.in);
     private final ClientSolicitation clientSolicitation = new ClientSolicitation();
     private final String address =  "https://gutendex.com/books?search=";
     private final BookRepository bookRepository;
     private final AuthorRepository authorRepository;
-    private List<Book> books = new ArrayList<>();
+    //private List<Book> books = new ArrayList<>();
     private final ConvertData convertData = new ConvertData();
 
     @Autowired
@@ -148,23 +143,49 @@ public class PropertiesMain {
         e.printStackTrace();
     }
 }
-    @Transactional
     private void listBooksAlreadyRegisted() {
-        var catchBook = bookRepository.findAll();
-        if (!catchBook.isEmpty()) {
+        var registedBooks = bookRepository.findAll();
+        if (!registedBooks.isEmpty()) {
             System.out.println("Books Already Registed: ");
-            catchBook.forEach(System.out::println);
+            registedBooks.forEach(System.out::println);
         } else {
             System.out.println("No registered books.");
         }
     }
 
     private void listAlreadyRegistedAuthors() {
+        var registedAuthors = authorRepository.findAll();
+        if (!registedAuthors.isEmpty()) {
+            System.out.println("Authors Already Registed: ");
+            registedAuthors.forEach(author -> System.out.println(author.getName()));
+        } else {
+            System.out.println("No registered authors.");
+        }
     }
 
     private void listLivingAuthorsInAGivenYear() {
+        System.out.println("Enter the Year:");
+        var year = scanner.nextInt();
+        scanner.nextLine();
+
+        var authorsLivingInAGivenYear = authorRepository.findByLivingInGivenYear(year);
+        if (!authorsLivingInAGivenYear.isEmpty()) {
+            System.out.println("Authors Living in Given Year: " + year);
+            authorsLivingInAGivenYear.forEach(System.out::println);
+        } else {
+            System.out.println("There are no living Authors in " + year);
+        }
     }
 
     private void listBooksInAGivenLanguage() {
+        var registeredLanguages = bookRepository.requestLanguage();
+        System.out.println("Languages:");
+        registeredLanguages.forEach(System.out::println);
+
+        System.out.println("Enter the Language:");
+        var language = scanner.nextLine();
+
+        bookRepository.findByBooksInGivenLanguage(language)
+                .forEach(System.out::println);
     }
 }

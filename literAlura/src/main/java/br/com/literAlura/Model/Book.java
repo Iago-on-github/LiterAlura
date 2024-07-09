@@ -24,7 +24,6 @@ public class Book {
     @JoinColumn(name = "author_id")
     private Author author;
 
-    // Construtor sem o parâmetro id
     public Book(Long id, String title, List<String> language, String downloadCount) {
         this.id = id;
         this.title = title;
