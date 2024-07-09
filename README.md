@@ -6,9 +6,8 @@
  • Java 22
  
  • InteliJ IDEA
- 
- • Api Gutendex
 
+ • Api Gutendex
 <h4 align="center"> 
 	🚧 Status: Finalizado.  🚧
 </h4>
